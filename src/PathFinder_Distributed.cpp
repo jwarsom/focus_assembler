@@ -453,12 +453,11 @@ int main(int argc, char * argv [])
 			fclose(pFile);
 		}
 
-		cout<<"DONE "<<endl;
+	
 
 		int handshake = 0;
 		MPI_Send(&handshake, 1, MPI_INT, 0, pathTag, MPI_COMM_WORLD);
 	}
-
 
 	if(rank == 0)
 	{
@@ -469,7 +468,6 @@ int main(int argc, char * argv [])
 			cout<<"REcieved "<<endl;
 		}
 
-		cout<<"HERE RANK 0 "<<endl;
 
 		int iSize = 0; int pSize = 0;
 		for(int i = 0; i < nTasks-1; i++)
