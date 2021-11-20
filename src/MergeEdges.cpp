@@ -312,10 +312,8 @@ void MergeEdges::writeFile(uint32_t buff [], const int size, const char dir [], 
 	char * file = new char [500];
 	sprintf(file, "%s/set%d", dir, set);
 	FILE * oFile = fopen(file, "w");
-	//cout<<file<<endl;
 	delete [] file;
 	fwrite(buff, sizeof(uint32_t), size, oFile);
-	//cout<<"DONe "<<endl;
 	fclose(oFile);
 }
 
@@ -330,9 +328,7 @@ void MergeEdges::appendFile(uint32_t buff [], const int size, const char dir [],
 	char * file = new char [500];
 	sprintf(file, "%s/set%d", dir, set);
 	FILE * oFile = fopen(file, "a");
-	//cout<<"APPEND ING "<<file<<endl;
 	delete [] file;
 	fwrite(buff, sizeof(uint32_t), size,  oFile);
-	//cout<<"DONE "<<endl;
 	fclose(oFile);
 }
