@@ -151,7 +151,6 @@ int main(int argc, char * argv [])
 		delete [] pathDir;
 	}
 
-	cout<<"HERE 1 "<<endl;
 	MPI_Barrier(MPI_COMM_WORLD);
 
 	if(rank != 0)
@@ -459,7 +458,6 @@ int main(int argc, char * argv [])
 		int handshake = 0;
 		MPI_Send(&handshake, 1, MPI_INT, 0, pathTag, MPI_COMM_WORLD);
 	}
-	cout<<"OUT HERE "<<endl;
 
 
 	if(rank == 0)
@@ -493,16 +491,12 @@ int main(int argc, char * argv [])
 			delete [] fileName;		
 		}
 
-		cout<<"DONE RANK 1"<<endl;
-
 		int readPos1 = 0; int readPos2 = 0; 
-		cout<<pSize<<" "<<iSize<<endl;
 		int * paths = new int[pSize];
 		int * index = new int [iSize]; 
 
 		map<int, int> links;
 		map<int, int> links_rev;
-		cout<<"HERE 1"<<endl;
 
 		for(int i = 0; i < nTasks-1; i++)
 		{
@@ -556,8 +550,6 @@ int main(int argc, char * argv [])
 			delete [] fileName;
 		}
 
-		cout<<"HERE 3"<<endl;
-
 		map<int, int> locs;
 		for(int i = 0; i < iSize; i+=2)
 		{
@@ -570,7 +562,6 @@ int main(int argc, char * argv [])
 		int currPos = 0; 
 
 		set<int> visited;
-		cout<<"HERE 4"<<endl;
 
 		while(currPos < pSize)
 		{
@@ -648,8 +639,6 @@ int main(int argc, char * argv [])
 			currPos+=(paths[currPos] + 1);
 		}
 
-		cout<<"HERE 5"<<endl;
-
 		for(int i = 0; i < nTasks-1; i++)
 		{
 			char * fileName = new char[1000];
@@ -665,7 +654,6 @@ int main(int argc, char * argv [])
 
 			delete [] fileName;
 		}
-		cout<<"HERE 6"<<endl;
 
 		char * fileName = new char[1000];
 		sprintf(fileName, "%s/Paths/paths", workDir.c_str());
