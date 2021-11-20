@@ -465,7 +465,7 @@ int main(int argc, char * argv [])
 		{
 			MPI_Status status; int handshake = 0;
 			MPI_Recv(&handshake, 1, MPI_INT, MPI_ANY_SOURCE, pathTag, MPI_COMM_WORLD, &status);
-			cout<<"REcieved "<<endl;
+			cout<<"Recieved "<<endl;
 		}
 
 
