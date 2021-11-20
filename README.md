@@ -82,3 +82,5 @@ A test data set, (test.fasta, test.qual), can be found in the data directory.
 Run any program without arguements to display a help page with program arguments.
 
 ## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
