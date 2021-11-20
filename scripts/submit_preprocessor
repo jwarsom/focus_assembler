@@ -1,0 +1,10 @@
+#!/bin/sh
+#SBATCH --time=2:00:00          # Run time in hh:mm:ss
+#SBATCH --mem-per-cpu=8000       # Minimum memory required per CPU (in megabytes)
+#SBATCH --job-name=preprocess
+#SBATCH --error=preprocess.err
+#SBATCH --output=preprocess.out
+
+module load compiler/gcc openmpi
+
+/Path/To/Dir/focus_assembler/bin/preprocess --workDir workDir --numJobs 4 --singleReads /Path/To/Dir/focus_assembler/data/test.fasta --trimWindowLen 10 --minQualVal 25 --seqTagLen 50 --trim3 0 --trim5 0 --minReadLen 75

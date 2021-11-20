@@ -1,0 +1,54 @@
+CC=mpic++
+OBJECT_DIR=build
+CFLAGS= -c -O2 -w
+BIN_DIR=bin
+LDFLAGS=
+
+all:$(BIN_DIR)/parallelAlign $(BIN_DIR)/coarsenGraph $(BIN_DIR)/uncoarsenGraph $(BIN_DIR)/distributeSpectrum
+OBJS1=$(OBJECT_DIR)/parallelAlign.o
+OBJS2=$(OBJECT_DIR)/CoarsenGraph.o $(OBJECT_DIR)/Graph.o $(OBJECT_DIR)/Dictionary.o $(OBJECT_DIR)/Labels.o $(OBJECT_DIR)/MergeEdges.o $(OBJECT_DIR)/MergeFragments.o $(OBJECT_DIR)/Fragment_Index.o $(OBJECT_DIR)/SortEdges.o $(OBJECT_DIR)/SortFragments.o 
+OBJS3=$(OBJECT_DIR)/UnCoarsenGraph.o $(OBJECT_DIR)/Consensus.o $(OBJECT_DIR)/Graph.o $(OBJECT_DIR)/Dictionary.o $(OBJECT_DIR)/Labels.o $(OBJECT_DIR)/MergeEdges.o $(OBJECT_DIR)/SortEdges.o $(OBJECT_DIR)/Fragment_Index.o 
+OBJS4=$(OBJECT_DIR)/Distribute_Spectrum.o $(OBJECT_DIR)/Dictionary.o $(OBJECT_DIR)/Graph.o 
+
+$(BIN_DIR)/parallelAlign: $(OBJS1)
+	$(CC) $(LDFLAGS) $(OBJS1) -o $(BIN_DIR)/parallelAlign
+
+$(OBJECT_DIR)/parallelAlign.o: src/ParallelAlign.cpp
+	$(CC) $(CFLAGS) src/ParallelAlign.cpp -o $(OBJECT_DIR)/parallelAlign.o
+
+$(BIN_DIR)/coarsenGraph: $(OBJS2)
+	$(CC) $(LDFLAGS) $(OBJS2) -o $(BIN_DIR)/coarsenGraph
+
+$(OBJECT_DIR)/CoarsenGraph.o: src/CoarsenGraph.cpp
+	$(CC) $(CFLAGS) src/CoarsenGraph.cpp -o $(OBJECT_DIR)/CoarsenGraph.o
+
+$(OBJECT_DIR)/Graph.o: src/Graph.cpp
+	$(CC) $(CFLAGS) src/Graph.cpp -o $(OBJECT_DIR)/Graph.o
+
+$(OBJECT_DIR)/MergeEdges.o: src/MergeEdges.cpp
+	$(CC) $(CFLAGS) src/MergeEdges.cpp -o $(OBJECT_DIR)/MergeEdges.o
+
+$(OBJECT_DIR)/MergeFragments.o: src/MergeFragments.cpp
+	$(CC) $(CFLAGS) src/MergeFragments.cpp -o $(OBJECT_DIR)/MergeFragments.o
+
+$(OBJECT_DIR)/SortEdges.o: src/SortEdges.cpp
+	$(CC) $(CFLAGS) src/SortEdges.cpp -o $(OBJECT_DIR)/SortEdges.o
+
+$(OBJECT_DIR)/SortFragments.o: src/SortFragments.cpp
+	$(CC) $(CFLAGS) src/SortFragments.cpp -o $(OBJECT_DIR)/SortFragments.o
+
+$(BIN_DIR)/uncoarsenGraph: $(OBJS3)
+	$(CC) $(LDFLAGS) $(OBJS3) -o $(BIN_DIR)/uncoarsenGraph
+
+$(OBJECT_DIR)/UnCoarsenGraph.o: src/UnCoarsenGraph.cpp
+	$(CC) $(CFLAGS) src/UnCoarsenGraph.cpp -o $(OBJECT_DIR)/UnCoarsenGraph.o
+
+$(OBJECT_DIR)/Consensus.o: src/Consensus.cpp
+	$(CC) $(CFLAGS) src/Consensus.cpp -o $(OBJECT_DIR)/Consensus.o
+
+$(BIN_DIR)/distributeSpectrum: $(OBJS4)
+	$(CC) $(LDFLAGS) $(OBJS4) -o $(BIN_DIR)/distributeSpectrum
+
+$(OBJECT_DIR)/Distribute_Spectrum.o: src/Distribute_Spectrum.cpp
+	$(CC) $(CFLAGS) src/Distribute_Spectrum.cpp -o $(OBJECT_DIR)/Distribute_Spectrum.o
+

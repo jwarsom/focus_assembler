@@ -1,0 +1,4 @@
+perl -ne 'print ((0 == (($.+3) % 4) || (0 == (($.+2) % 4)) ) ? $_ : "")' /work/biocore/jwarnke/Female_Twin16A_Crohns/SRAreads/SRR053024.fastq > /work/biocore/jwarnke/Female_Twin16A_Crohns/SRAreads/SRR053024.fasta
+perl -ne 'print ((0 == (($.+3) % 4) || (0 == (($.) % 4)) ) ? $_ : "")' /work/biocore/jwarnke/Female_Twin16A_Crohns/SRAreads/SRR053024.fastq > /work/biocore/jwarnke/Female_Twin16A_Crohns/SRAreads/SRR053024.fasta.qual
+sed 's/@SRR/>SRR/g' /work/biocore/jwarnke/Female_Twin16A_Crohns/SRAreads/SRR053024.fasta.qual
+sed -i 's/@SRR/>SRR/g' /work/biocore/jwarnke/Female_Twin16A_Crohns/SRAreads/SRR053024.fasta

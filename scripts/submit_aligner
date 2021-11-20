@@ -1,0 +1,11 @@
+#!/bin/sh
+#SBATCH --time=12:00:00          # Run time in hh:mm:ss
+#SBATCH --mem-per-cpu=8gb       # Minimum memory required per CPU (in megabytes)
+#SBATCH --ntasks=6
+#SBATCH --job-name=align
+#SBATCH --error=/work/biocore/jwarnke/ClassificationProject/align_set5.err
+#SBATCH --output=/work/biocore/jwarnke/ClassificationProject/align_set5.out
+ 
+module load compiler/gcc/4.8 openmpi/1.6
+
+mpirun /work/biocore/jwarnke/MetaAlign/bin/parallelAlign --workDir /work/biocore/jwarnke/ClassificationProject/Set5 --minIden 90 --minOverlap 50 
